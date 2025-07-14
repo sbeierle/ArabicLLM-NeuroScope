@@ -1,0 +1,16 @@
+graph TD
+    A[Prompt Arabic Input<br/>(Fusha / Dialect)]
+    B[Tokenizer<br/>(Token Split)]
+    C[NER Engine<br/>(Named Entity Recognition)]
+    D[Morphological Analyzer]
+    E[Scoring Module<br/>(NER Score, Fragility, Morph Score)]
+    F[Visualization<br/>(Spiderplot + 3D Plotly)]
+    G[README_NLP.md<br/>Method Card & Commentary]
+
+    A --> B
+    B --> C
+    B --> D
+    C --> E
+    D --> E
+    E --> F
+    E --> G
