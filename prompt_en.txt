@@ -1,0 +1,1 @@
+Write a Python script that extracts all verses in the Qur'an related to patience and mercy, and tags them by chapter and verse number.

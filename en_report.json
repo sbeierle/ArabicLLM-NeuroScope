@@ -1,0 +1,96 @@
+{
+  "prompt": "Write a Python script that extracts all verses in the Qur'an related to patience and mercy, and tags them by chapter and verse number.",
+  "input_tokens": 29,
+  "activations": {
+    "layer_0": [
+      2.93359375
+    ],
+    "layer_1": [
+      4.62109375
+    ],
+    "layer_2": [
+      5.58203125
+    ],
+    "layer_3": [
+      6.921875
+    ],
+    "layer_4": [
+      8.6171875
+    ],
+    "layer_5": [
+      11.1328125
+    ],
+    "layer_6": [
+      14.3125
+    ],
+    "layer_7": [
+      15.8046875
+    ],
+    "layer_8": [
+      15.546875
+    ],
+    "layer_9": [
+      18.671875
+    ],
+    "layer_10": [
+      18.84375
+    ],
+    "layer_11": [
+      19.828125
+    ],
+    "layer_12": [
+      18.71875
+    ],
+    "layer_13": [
+      21.265625
+    ],
+    "layer_14": [
+      23.171875
+    ],
+    "layer_15": [
+      27.65625
+    ],
+    "layer_16": [
+      29.5625
+    ],
+    "layer_17": [
+      34.09375
+    ],
+    "layer_18": [
+      47.875
+    ],
+    "layer_19": [
+      41.46875
+    ],
+    "layer_20": [
+      45.28125
+    ],
+    "layer_21": [
+      45.71875
+    ],
+    "layer_22": [
+      61.1875
+    ],
+    "layer_23": [
+      53.6875
+    ],
+    "layer_24": [
+      59.15625
+    ],
+    "layer_25": [
+      58.96875
+    ],
+    "layer_26": [
+      71.8125
+    ],
+    "layer_27": [
+      81.5
+    ],
+    "layer_28": [
+      106.75
+    ],
+    "layer_29": [
+      391.5
+    ]
+  }
+}
