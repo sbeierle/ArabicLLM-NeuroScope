@@ -1,23 +1,23 @@
 flowchart TD
     A[Prompt Input] --> B[Tokenization]
     B --> C{Language}
-    C -->|English| D1[Layer-wise Activation Analysis]
-    C -->|Fusha Arabic| D2[Layer-wise Activation Analysis]
-    C -->|Saudi Dialect| D3[Layer-wise Activation Analysis]
+    C --> D1[Layer-wise Activation (EN)]
+    C --> D2[Layer-wise Activation (Fusha)]
+    C --> D3[Layer-wise Activation (Dialect)]
 
-    D1 --> E1[Norm Aggregation per Layer]
-    D2 --> E2[Norm Aggregation per Layer]
-    D3 --> E3[Norm Aggregation per Layer]
+    D1 --> E1[Norm Aggregation (EN)]
+    D2 --> E2[Norm Aggregation (Fusha)]
+    D3 --> E3[Norm Aggregation (Dialect)]
 
-    E1 --> F1[Line Plot (EN)]
-    E2 --> F2[Line Plot (Fusha)]
-    E3 --> F3[Line Plot (Dialect)]
+    E1 --> F1[Line Plot]
+    E2 --> F2[Line Plot]
+    E3 --> F3[Line Plot]
 
-    F1 --> G[Comparison Matrix / Scoring]
+    F1 --> G[Comparison & Scoring]
     F2 --> G
     F3 --> G
 
-    G --> H[3D Plotly Firepower Map]
+    G --> H[3D Firepower Map]
     G --> I[Mermaid Visualization]
     H --> Z[LLM Bias Evaluation (Arabic Scope)]
     I --> Z
