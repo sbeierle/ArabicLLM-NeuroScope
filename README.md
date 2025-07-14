@@ -22,59 +22,78 @@ ArabicLLM-NeuroScope/
 └── README.md
 ```
 ## 🔍 Prompt Activation Analysis
-This analysis measures token firepower across layers using activation norms:
+
+This module measures token firepower across layers using activation norms:  
 $\|h_i\| = \sqrt{h_1^2 + h_2^2 + ... + h_d^2}$
 
-Higher norms across more layers = deeper processing. Lower activation = bias, poor embedding, or soft filters.
+📌 Interpretation:  
+Higher norms across more layers → deeper processing  
+Lower activation → soft filters, poor embedding, or weak tokenization
 
-🧪 Tested prompts:
+🧪 Example prompts:
 
-* English: "What is the history of artificial intelligence in the Middle East?"
-* Fusha: "ما هو تاريخ الذكاء الاصطناعي في الشرق الأوسط؟"
-* Dialect: "وش صار مع الذكاء الاصطناعي بالخليج؟"
+- English: `"What is the history of artificial intelligence in the Middle East?"`
+- Fusha: `"ما هو تاريخ الذكاء الاصطناعي في الشرق الأوسط؟"`
+- Dialect: `"وش صار مع الذكاء الاصطناعي بالخليج؟"`
 
 📊 Outputs:
 
-* Per-layer norms `layer_norm_comparison.png`
-* Firepower comparison `firepower_comparison.png`
-* Interactive 3D HTML landscape `activation_3d_plot.html`
+- 📈 [`visual/layer_norm_comparison.png`](visual/layer_norm_comparison.png)
+- 🔥 [`visual/firepower_comparison.png`](visual/firepower_comparison.png)
+- 🧠 Interactive 3D: [`visual/activation_3d_plot.html`](visual/activation_3d_plot.html)
+
+---
 
 ## 🧬 NLP Semantic Evaluation (NER, Morphology, Token Fragility)
+
+Located in [`nlp_analysis/`](nlp_analysis/)
+
 This module explores:
 
-* 🧠 NER recognition of entities (e.g., countries, tech terms)
-* 🧱 Morphological patterns in dialect Arabic
-* 🧩 Token fragility: how Arabic phrases are split into unstable subwords
+- 🧠 NER entity detection (e.g., tech, countries)
+- 🧱 Morphological evaluation of dialect prompts
+- 🧩 Token Fragility – how robust is the tokenizer for Arabic?
 
-🎯 Goal: Reveal biases in tokenizer, vocab sparsity, and semantic integrity of LLMs trained mostly on English.
+🎯 Goal: Reveal gaps in vocabulary coverage, semantic integrity, and LLM robustness in non-English languages.
 
-📁 Files:
+📁 Key Files:
 
-* `nlp_eval.py` (entry point)
-* `ner_result.json`
-* `nlp_spider_plot.png` (NER coverage, language comparison)
-* `prompt_ner_fusha.txt`, `prompt_token_fragility.txt`
+- Entry: [`nlp_analysis/nlp_eval.py`](nlp_analysis/nlp_eval.py)
+- Prompts: [`nlp_analysis/prompt_ner_fusha.txt`](nlp_analysis/prompt_ner_fusha.txt)
+- NER JSON: [`nlp_analysis/ner_result.json`](nlp_analysis/ner_result.json)
+- Spider Plot: [`visual/nlp_spider_plot.png`](visual/nlp_spider_plot.png)
+- Interactive: [`nlp_analysis/nlp_3d_eval.html`](nlp_analysis/nlp_3d_eval.html)
+
+---
 
 ## 🔭 Visualizations
-* 📈 `layer_norm_comparison.png`: Layer-wise processing strength
-* 🔥 `firepower_comparison.png`: Global token intensity
-* 🧠 `3D_activation_landscape2.png`: Prompt vs. layer vs. norm
-* 🕸️ `nlp_spider_plot.png`: Semantic reach (NER & Morphology)
-* 🧩 Mermaid diagrams: Flow logic & architecture
+
+All plots are located in [`visual/`](visual/)
+
+- 📈 [`layer_norm_comparison.png`](visual/layer_norm_comparison.png): Mean norm per layer by language
+- 🔥 [`firepower_comparison.png`](visual/firepower_comparison.png): Sum of token norm activations
+- 🧠 [`3D_activation_landscape2.png`](visual/3D_activation_landscape2.png): Prompt vs. Layer vs. Norm
+- 🕸️ [`nlp_spider_plot.png`](visual/nlp_spider_plot.png): Semantic/NLP coverage
+- 🧩 [`mermaid/mermaid_arabic_llm1.png`](mermaid/mermaid_arabic_llm1.png): Flowchart of entire system
+
+---
 
 ## 🚀 How to Run
-```bash
-# Step 1: Prompt Activation
-python analyze_prompt_activation.py \
-  --model_path ../patched_model_main_bin \
-  --prompt "$(cat prompt_fusha.txt)" \
-  --output fusha_report.json
 
-# Step 2: NLP Analysis
-python nlp_eval.py prompt_ner_fusha.txt ner_result.json
+```bash
+# Step 1: Prompt Activation (via Norms)
+python scripts/analyze_prompt_activation.py \
+  --model_path ../patched_model_main_bin \
+  --prompt "$(cat prompts/prompt_fusha.txt)" \
+  --output reports/fusha_report.json
+
+# Step 2: NLP Evaluation
+python nlp_analysis/nlp_eval.py \
+  nlp_analysis/prompt_ner_fusha.txt \
+  nlp_analysis/ner_result.json
 
 # Step 3: Plotting
-python plot_layer_norms_all.py
-python plot_firepower.py
-python nlp_spider_plot.py
-python plot_3d_layernorm.py
+python scripts/plot_layer_norms_all.py
+python scripts/plot_firepower.py
+python nlp_analysis/nlp_spider_plot.py
+python scripts/plot_3d_layernorm.py
